@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^2.4.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulparton/adaptor-crudbrella-mongoose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paulparton/adaptor-crudbrella-mongoose/issues"
+  },
+  "homepage": "https://github.com/paulparton/adaptor-crudbrella-mongoose"
 }

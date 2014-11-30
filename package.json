@@ -1,6 +1,6 @@
 {
   "name": "adaptor-crudbrella-mongoose",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A mongoose adaptor for crudbrella",
   "main": "index.js",
   "scripts": {

@@ -6,166 +6,85 @@ var _  = require('lodash');
 module.exports =  {
 
 	//Create a new record
-	create: function (options){
+	create: function (options, callback){
 
-		return function(req, res){
+		console.log('iniside create: ', options);
 
-			//If no options are provided default to an empty object
-			options = options || {};
+		this.collection.create(options.body, function(err, result) {
 
-			this.collection.create(req.body, function(err, result) {
+			return callback(err, options);
 
-				//Pass results and req/res to the dbCallback
-				this.dbCallback({
-					req: req, 
-					res: res, 
-					err: err, 
-					result: result,
-					onSuccess:options.onSuccess || this.successCallback,
-					onError:options.onError || this.errorCallback
-				});
-
-			}.bind(this));
-
-		}.bind(this);
+		}.bind(this));
 
 	},
 
 	//Read an existing record / records
-	read: function(options){
+	read: function(options, callback){
 
-		return function (req, res){
+		//Find using optional query or find all
+		this.collection.find(options.query || {})
 
-			console.log("inside read.");
+			//Process options populate string / object or default to empty string
+			.populate(options.populate || '')
 
-			//If no options are provided default to an empty object
-			options = options || {};
-			options.query = options.query || {};
+			//Execute the query
+			.exec(function(err, items){
 
-			//Create a local copy of the query definition to be parsed
-			var query = JSON.parse(JSON.stringify(options.query)) || {};
-
-			//Loop through every object in query
-			_.each(query, function(item, key){
-
-				//If the value starts with a ^ use the item value as a key for req.params
-				if(item[0] === "^"){
-					query[key] = req.params[item.replace("^","")];
+				if(items.length === 1){
+					items = items[0];
 				}
 
-			});
+				return callback(err, items);
 
-			//Find using optional query or find all
-			this.collection.find(query || {})
+			}.bind(this)
 
-				//Process options populate string / object or default to empty string
-				.populate(options.populate || '')
+		);
 
-				//Execute the query
-				.exec(function(err, items){
-
-					if(items.length === 1){
-						items = items[0];
-					}
-
-					//Pass results and req/res to the dbCallback
-					this.dbCallback({
-						req: req, 
-						res: res, 
-						err: err, 
-						result: items,
-						onSuccess:options.onSuccess || this.successCallback,
-						onError:options.onError || this.errorCallback
-					});
-
-				}.bind(this)
-
-			);
-
-		}.bind(this);
 	},
 
 	//Update a record
-	update: function(options){
+	update: function(options, callback){
 
-		return function(req, res){
+		//If the id has been included in the body, remove it
+		var x = options.body._id; 
+		delete options.body._id;
 
-			//If no options are provided default to an empty object
-			options = options || {};
+		//Check if the body contains any populated fields and depopulate them
+		this.utils.depopulate(this.collection, options.body);
 
-			//If the id has been included in the body, remove it
-			var x = req.body._id; 
-			delete req.body._id;
+		//Use crudbrella read to find the document to be updated
+		this.db.read({query: {_id: x}}, function(error, result){
 
-			console.log("what now?", req.body, x);
+			//custom success handler to complete update, use default for errors
+			var updated = _.extend(result, options.body);
+			
+			updated.save(function (err, actualResult) {
 
-			//Check if the body contains any populated fields and depopulate them
-			this.utils.depopulate(this.collection, req.body);
+				return callback(err, actualResult);
 
-			//Use crudbrella read to find the document to be updated
-			this.read({
+			}.bind(this));
 
-				query: {_id: x},
 
-				//custom success handler to complete update, use default for errors
-				onSuccess: function(innerRes, result){
-
-					var updated = _.extend(result, req.body);
-					
-					updated.save(function (err, actualResult) {
-
-						console.log("so, this is saved here?...", actualResult);
-
-						//Pass results and req/res to the dbCallback
-						this.dbCallback({
-							req: req, 
-							res: res, 
-							err: err, 
-							result: actualResult,
-							onSuccess:options.onSuccess || this.successCallback,
-							onError:options.onError || this.errorCallback
-						});
-
-					}.bind(this));
-					
-				}.bind(this)
-
-			})(req, res);
-
-		}.bind(this);
+		});
 
 	},
 
 	//Delete a record
-	delete: function(options){
+	delete: function(options, callback){
 
-		return function(req, res){
+		//If the id has been included in the body, remove it
+		if(options.body._id) { delete options.body._id; }
 
-			//If no options are provided default to an empty object
-			options = options || {};
+		//Check if the body contains any populated fields and depopulate them
+		this.utils.depopulate(this.collection, options.body);
 
-			//If the id has been included in the body, remove it
-			if(req.body._id) { delete req.body._id; }
+		//Use dryCrud.read to find the document to be deleted
+		this.collection.findOneAndRemove({_id: options.query._id}, function(err, result){
 
-			//Check if the body contains any populated fields and depopulate them
-			this.utils.depopulate(this.collection, req.body);
+			//Pass results and req/res to the callback
+			return callback(err, result);
 
-			//Use dryCrud.read to find the document to be deleted
-			this.collection.findOneAndRemove({_id: req.params.id}, function(err, result){
-
-				//Pass results and req/res to the dbCallback
-				this.dbCallback({
-					req: req, 
-					res: res, 
-					err: err, 
-					result: "",
-					onSuccess:options.onSuccess || this.successCallback,
-					onError:options.onError || this.errorCallback
-				});
-
-			}.bind(this));
-
-		}.bind(this);
+		}.bind(this));
 
 	}
 

@@ -20,27 +20,27 @@
 8 verbose parsed url   href: '.' }
 9 silly lockFile 3a52ce78- .
 10 verbose lock . /home/vagrant/.npm/3a52ce78-.lock
-11 verbose tar pack [ '/home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz',
+11 verbose tar pack [ '/home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz',
 11 verbose tar pack   '.' ]
-12 verbose tarball /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz
+12 verbose tarball /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz
 13 verbose folder .
-14 info prepublish adaptor-crudbrella-mongoose@0.0.1
+14 info prepublish adaptor-crudbrella-mongoose@0.0.3
 15 silly lockFile 1f1177db-tar tar://.
 16 verbose lock tar://. /home/vagrant/.npm/1f1177db-tar.lock
-17 silly lockFile 8c04323a-rella-mongoose-0-0-1-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz
-18 verbose lock tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz /home/vagrant/.npm/8c04323a-rella-mongoose-0-0-1-package-tgz.lock
+17 silly lockFile 8676754a-rella-mongoose-0-0-3-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz
+18 verbose lock tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz /home/vagrant/.npm/8676754a-rella-mongoose-0-0-3-package-tgz.lock
 19 silly lockFile 1f1177db-tar tar://.
 20 silly lockFile 1f1177db-tar tar://.
-21 silly lockFile 8c04323a-rella-mongoose-0-0-1-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz
-22 silly lockFile 8c04323a-rella-mongoose-0-0-1-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package.tgz
-23 silly lockFile 464ad512-rudbrella-mongoose-0-0-1-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package
-24 verbose lock /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package /home/vagrant/.npm/464ad512-rudbrella-mongoose-0-0-1-package.lock
-25 silly lockFile 464ad512-rudbrella-mongoose-0-0-1-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package
-26 silly lockFile 464ad512-rudbrella-mongoose-0-0-1-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.1/package
+21 silly lockFile 8676754a-rella-mongoose-0-0-3-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz
+22 silly lockFile 8676754a-rella-mongoose-0-0-3-package-tgz tar:///home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package.tgz
+23 silly lockFile b5de1550-rudbrella-mongoose-0-0-3-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package
+24 verbose lock /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package /home/vagrant/.npm/b5de1550-rudbrella-mongoose-0-0-3-package.lock
+25 silly lockFile b5de1550-rudbrella-mongoose-0-0-3-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package
+26 silly lockFile b5de1550-rudbrella-mongoose-0-0-3-package /home/vagrant/.npm/adaptor-crudbrella-mongoose/0.0.3/package
 27 silly lockFile 3a52ce78- .
 28 silly lockFile 3a52ce78- .
 29 silly publish { name: 'adaptor-crudbrella-mongoose',
-29 silly publish   version: '0.0.1',
+29 silly publish   version: '0.0.3',
 29 silly publish   description: 'A mongoose adaptor for crudbrella',
 29 silly publish   main: 'index.js',
 29 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
@@ -53,39 +53,40 @@
 29 silly publish      url: 'https://github.com/paulparton/adaptor-crudbrella-mongoose.git' },
 29 silly publish   bugs: { url: 'https://github.com/paulparton/adaptor-crudbrella-mongoose/issues' },
 29 silly publish   homepage: 'https://github.com/paulparton/adaptor-crudbrella-mongoose',
-29 silly publish   gitHead: 'd71895aa53c78ac32faf2ef97c84d66a3aa7cca2',
-29 silly publish   readme: 'ERROR: No README data found!',
-29 silly publish   _id: 'adaptor-crudbrella-mongoose@0.0.1',
-29 silly publish   _shasum: 'e0f66d8d910700aa47ca87d7c7bd749a591df2a0',
+29 silly publish   readme: '#adaptor-crudbrella-mongoose\nA mongoose adaptor for <a href="https://www.npmjs.org/package/crudbrella">Crudbrella</a>\n###What exactly does it do?\nAllows crudbrella to work with mongoose\n\n##Installation\nAfter installing nodeJS, your database of choice and crudbrella, install this adaptor via npm\n\n    npm install adaptor-crudbrella-mongoose\n\n##Options\n###Populate\nTo populate a field with data stored in another collection, pass the field name to the populate option during the query.\n\n    //crudbrella\n    var crudbrella = require(\'crudbrella\');\n        //A database connection\n        mongooseCollection = ...,\n        //A crudbrella adaptor\n        crudbrellaAdaptor = require("adaptor-crudbrella-mongoose"),\n        //express app or router\n\t    app;\n\t    \n        //open a crudbrella!\n\t    myCrud = crudbrella({\n\t\t    type: crudbrellaAdaptor,\n\t\t    collection: mongooseCollection\n\t    });\n\t    \n\t    //Query the movies collection and populate the actors from the actors collection\n\t    app.get(\'/\', myCrud.read({\n\t        populate: \'actors\'\n\t    }));',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   gitHead: '383137b792e3dd97ccd536bcfbd3ea0e1799d056',
+29 silly publish   _id: 'adaptor-crudbrella-mongoose@0.0.3',
+29 silly publish   _shasum: '199e25c4f7b14b6477946f68209830deb92f706a',
 29 silly publish   _from: '.' }
 30 verbose request where is /adaptor-crudbrella-mongoose
 31 verbose request registry https://registry.npmjs.org/
-32 verbose request id 53c2603723218016
+32 verbose request id 078f3e1714b594a2
 33 verbose url raw /adaptor-crudbrella-mongoose
 34 verbose url resolving [ 'https://registry.npmjs.org/',
 34 verbose url resolving   './adaptor-crudbrella-mongoose' ]
 35 verbose url resolved https://registry.npmjs.org/adaptor-crudbrella-mongoose
 36 verbose request where is https://registry.npmjs.org/adaptor-crudbrella-mongoose
-37 info trying registry request attempt 1 at 05:57:30
+37 info trying registry request attempt 1 at 07:36:21
 38 http PUT https://registry.npmjs.org/adaptor-crudbrella-mongoose
 39 http 403 https://registry.npmjs.org/adaptor-crudbrella-mongoose
-40 verbose headers { date: 'Sun, 30 Nov 2014 05:57:30 GMT',
+40 verbose headers { date: 'Sun, 30 Nov 2014 07:36:22 GMT',
 40 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
 40 verbose headers   'content-type': 'application/json',
 40 verbose headers   'cache-control': 'max-age=60',
-40 verbose headers   'content-length': '2055',
+40 verbose headers   'content-length': '3690',
 40 verbose headers   'accept-ranges': 'bytes',
 40 verbose headers   via: '1.1 varnish',
-40 verbose headers   'x-served-by': 'cache-syd1621-SYD',
+40 verbose headers   'x-served-by': 'cache-syd1622-SYD',
 40 verbose headers   'x-cache': 'MISS',
 40 verbose headers   'x-cache-hits': '0',
-40 verbose headers   'x-timer': 'S1417327050.520337,VS0,VE195',
+40 verbose headers   'x-timer': 'S1417332982.281052,VS0,VE195',
 40 verbose headers   'keep-alive': 'timeout=10, max=50',
 40 verbose headers   connection: 'Keep-Alive' }
 41 error publish Failed PUT 403
-42 error Error: forbidden cannot modify pre-existing version: 0.0.1
-42 error old={"name":"adaptor-crudbrella-mongoose","version":"0.0.1","description":"A mongoose adaptor for crudbrella","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"author":"","license":"ISC","dependencies":{"lodash":"^2.4.1"},"gitHead":"d71895aa53c78ac32faf2ef97c84d66a3aa7cca2","_id":"adaptor-crudbrella-mongoose@0.0.1","_shasum":"40a86779d3099b046bc86622b1c0f7c2bde22b80","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"paupl","email":"paulparton@gmail.com"},"maintainers":[{"name":"paupl","email":"paulparton@gmail.com"}],"dist":{"shasum":"40a86779d3099b046bc86622b1c0f7c2bde22b80","tarball":"http://registry.npmjs.org/adaptor-crudbrella-mongoose/-/adaptor-crudbrella-mongoose-0.0.1.tgz"}}
-42 error new={"name":"adaptor-crudbrella-mongoose","version":"0.0.1","description":"A mongoose adaptor for crudbrella","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"author":"","license":"ISC","dependencies":{"lodash":"^2.4.1"},"devDependencies":{},"repository":{"type":"git","url":"https://github.com/paulparton/adaptor-crudbrella-mongoose.git"},"bugs":{"url":"https://github.com/paulparton/adaptor-crudbrella-mongoose/issues"},"homepage":"https://github.com/paulparton/adaptor-crudbrella-mongoose","gitHead":"d71895aa53c78ac32faf2ef97c84d66a3aa7cca2","readme":"ERROR: No README data found!","_id":"adaptor-crudbrella-mongoose@0.0.1","_shasum":"e0f66d8d910700aa47ca87d7c7bd749a591df2a0","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"paupl","email":"paulparton@gmail.com"},"maintainers":[{"name":"paupl","email":"paulparton@gmail.com"}],"dist":{"shasum":"e0f66d8d910700aa47ca87d7c7bd749a591df2a0","tarball":"http://registry.npmjs.org/adaptor-crudbrella-mongoose/-/adaptor-crudbrella-mongoose-0.0.1.tgz"}}: adaptor-crudbrella-mongoose
+42 error Error: forbidden cannot modify pre-existing version: 0.0.3
+42 error old={"name":"adaptor-crudbrella-mongoose","version":"0.0.3","description":"A mongoose adaptor for crudbrella","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"author":"","license":"ISC","dependencies":{"lodash":"^2.4.1"},"devDependencies":{},"repository":{"type":"git","url":"https://github.com/paulparton/adaptor-crudbrella-mongoose.git"},"bugs":{"url":"https://github.com/paulparton/adaptor-crudbrella-mongoose/issues"},"homepage":"https://github.com/paulparton/adaptor-crudbrella-mongoose","gitHead":"8add2490a8462cb168ee0faab834672c51e5edf4","_id":"adaptor-crudbrella-mongoose@0.0.3","_shasum":"2c52ae2ed48b71e5ff2b8a9457c751861b392d9a","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"paupl","email":"paulparton@gmail.com"},"maintainers":[{"name":"paupl","email":"paulparton@gmail.com"}],"dist":{"shasum":"2c52ae2ed48b71e5ff2b8a9457c751861b392d9a","tarball":"http://registry.npmjs.org/adaptor-crudbrella-mongoose/-/adaptor-crudbrella-mongoose-0.0.3.tgz"}}
+42 error new={"name":"adaptor-crudbrella-mongoose","version":"0.0.3","description":"A mongoose adaptor for crudbrella","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"author":"","license":"ISC","dependencies":{"lodash":"^2.4.1"},"devDependencies":{},"repository":{"type":"git","url":"https://github.com/paulparton/adaptor-crudbrella-mongoose.git"},"bugs":{"url":"https://github.com/paulparton/adaptor-crudbrella-mongoose/issues"},"homepage":"https://github.com/paulparton/adaptor-crudbrella-mongoose","readme":"#adaptor-crudbrella-mongoose\u000aA mongoose adaptor for <a href=\"https://www.npmjs.org/package/crudbrella\">Crudbrella</a>\u000a###What exactly does it do?\u000aAllows crudbrella to work with mongoose\u000a\u000a##Installation\u000aAfter installing nodeJS, your database of choice and crudbrella, install this adaptor via npm\u000a\u000a    npm install adaptor-crudbrella-mongoose\u000a\u000a##Options\u000a###Populate\u000aTo populate a field with data stored in another collection, pass the field name to the populate option during the query.\u000a\u000a    //crudbrella\u000a    var crudbrella = require('crudbrella');\u000a        //A database connection\u000a        mongooseCollection = ...,\u000a        //A crudbrella adaptor\u000a        crudbrellaAdaptor = require(\"adaptor-crudbrella-mongoose\"),\u000a        //express app or router\u000a\u0009    app;\u000a\u0009    \u000a        //open a crudbrella!\u000a\u0009    myCrud = crudbrella({\u000a\u0009\u0009    type: crudbrellaAdaptor,\u000a\u0009\u0009    collection: mongooseCollection\u000a\u0009    });\u000a\u0009    \u000a\u0009    //Query the movies collection and populate the actors from the actors collection\u000a\u0009    app.get('/', myCrud.read({\u000a\u0009        populate: 'actors'\u000a\u0009    }));","readmeFilename":"README.md","gitHead":"383137b792e3dd97ccd536bcfbd3ea0e1799d056","_id":"adaptor-crudbrella-mongoose@0.0.3","_shasum":"199e25c4f7b14b6477946f68209830deb92f706a","_from":".","_npmVersion":"1.4.28","_npmUser":{"name":"paupl","email":"paulparton@gmail.com"},"maintainers":[{"name":"paupl","email":"paulparton@gmail.com"}],"dist":{"shasum":"199e25c4f7b14b6477946f68209830deb92f706a","tarball":"http://registry.npmjs.org/adaptor-crudbrella-mongoose/-/adaptor-crudbrella-mongoose-0.0.3.tgz"}}: adaptor-crudbrella-mongoose
 42 error     at RegClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
 42 error     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
 42 error     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:236:22)
